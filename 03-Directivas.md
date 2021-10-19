@@ -98,3 +98,82 @@ como puedes notar son etiquetas de apetura y cierre, que se muestra miestras el 
 recargamos el proyecto en la terminal con el comando:
 
 ng serve
+
+
+
+
+DIRECTIVA ngIf con metodo
+
+para esto vamos a usar un nuevo formulario por lo tanto vamos al achivo ejdirectivangif y lo actualizamos con el siguiente codigo. 
+
+<div class="container">
+    <h3>¿Cual es la capital de España?</h3>
+    <input type="text" class="form-control" [(ngModel)]="capital">
+    <p *ngIf="!capital; else correcto"> Complete la pregunta </p>
+    <ng-template #correcto>
+        <h4 *ngIf="setResultado(); else incorrecto"> !Correcto¡ </h4>
+    </ng-template>
+    <ng-template #incorrecto>
+        <h4>Lo siento, intentelo de nuevo</h4>
+    </ng-template>
+    
+    
+</div>
+
+con este formulario vemos que:   [(ngModel)]="capital" esta en el input y sera la variable que evaluaremos. 
+
+como primera directiva:  *ngIf="!capital; else correcto"  le decimos que si la varible no existe mostrar el texto "Complete la pregunta" pero si existe mostrar el template de nombre correcto.
+
+<ng-template #correcto>
+    <h4 *ngIf="setResultado(); else incorrecto"> !Correcto¡ </h4>
+</ng-template>
+
+creando el template tabien ponemos una directiva donde le decios que segun el resultado que nos arroje el metodo setResultado() si es true nos muestre el texto !Correcto¡ pero en caso contrario nos muestre el template de nombre incorrecto.
+
+<ng-template #incorrecto>
+    <h4>Lo siento, intentelo de nuevo</h4>
+</ng-template>
+
+por ultimo si las directivas nos lleva al template de nombre incorrecto ya vemos que su labor es mostrar el mensaje "Lo siento, intente de nuevo"
+
+Ahora debemos crear la varible capital y el metoedo setResultado en el archivo de ejdirectivangif.component.ts y escribimos lo siguiente: 
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-ejdirectivangif',
+  templateUrl: './ejdirectivangif.component.html',
+  styleUrls: ['./ejdirectivangif.component.css']
+})
+export class EjdirectivangifComponent implements OnInit {
+
+  // nombre!: string;                   //comentamos o borramos la variables que no vayamos a usar 
+
+  capital!: string;                     //creamos la variable capital
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  setResultado() {                      //creamos el metodo donde evaluaremos la variable capital
+    return this.capital === 'Madrid' ? true : false; 
+  }
+
+}
+
+
+Teniendo esto completado ya podemos actualizar el componente dentro del componente raiz de la siguietne forma: 
+
+
+<div>
+  <h3>Ejemplo de directiva ngif con metodo</h3>
+  <hr>
+  <app-ejdirectivangif></app-ejdirectivangif>
+
+</div>
+
+
+ya podemos recargar el proyecto con el siguiente comando el  terminal: 
+
+ng serve

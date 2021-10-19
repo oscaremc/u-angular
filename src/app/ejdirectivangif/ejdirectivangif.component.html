@@ -1,5 +1,7 @@
 
+<!-- Ejempo de ngIf y ngIf + else -->
 
+<!-- 
 <div class="container">
     <label>Nombre y Apellido</label>
     <input type="text" class="form-control" placeholder="Complete su nombre y apellido" [(ngModel)]="nombre">
@@ -11,5 +13,22 @@
             Enviar
         </button>
     </ng-template>
+    
+</div> -->
+
+
+<!-- Ejemplo de ngIf con metodo -->
+
+<div class="container">
+    <h3>¿Cual es la capital de España?</h3>
+    <input type="text" class="form-control" [(ngModel)]="capital">
+    <p *ngIf="!capital; else correcto"> Complete la pregunta </p>
+    <ng-template #correcto>
+        <h4 *ngIf="setResultado(); else incorrecto"> !Correcto¡ </h4>
+    </ng-template>
+    <ng-template #incorrecto>
+        <h4>Lo siento, intentelo de nuevo</h4>
+    </ng-template>
+    
     
 </div>
