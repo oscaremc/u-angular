@@ -208,3 +208,86 @@ para recargar el proyecto recuerda usar el siguiente comando en la terminal:
 ng serve
 
 
+
+DIRECTIVAS ngFor para objetos
+
+creamos un nuevo componenete con la siguiente lina de comando en la terminal: 
+
+ng g c ejarrayobjetos
+
+luego de cargar vamos a crear un modelo, para esto, vamos a ubicarnos en src > app y crearemos un carpeta llamada modelos que contendra un archivo con el nombre alumnos.model.ts con el siguiente codigo dentro: 
+
+export class Alumno {
+    public id: number; 
+    public nombre: string;
+    public apellido: string; 
+    public ciudad: string; 
+
+    constructor(id: number, nombre: string, apellido: string, ciudad: string){
+        this.id = id; 
+        this.nombre = nombre; 
+        this.apellido = apellido; 
+        this.ciudad = ciudad; 
+    }
+}
+
+con el modelo creado acontunuacion la vamos a envar datos a traves de el archivo ejarraysobjetos.components.ts con los siguientes datos: 
+
+import { Component, OnInit } from '@angular/core';
+import { Alumno } from '../modelos/alumno.model';     //importamos el model
+
+@Component({
+  selector: 'app-ejarrayobjetos',
+  templateUrl: './ejarrayobjetos.component.html',
+  styleUrls: ['./ejarrayobjetos.component.css']
+})
+export class EjarrayobjetosComponent implements OnInit {
+
+  public alumnos: Array<Alumno> = [                   //creamos la clase y le enviamos los datos que necesitamos
+    {id: 1, nombre: 'Juan', apellido: 'Gutierrez', ciudad: 'Madrid'},
+    {id: 2, nombre: 'Pedro', apellido: 'Lopez', ciudad: 'Sevilla'}
+  ]
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+
+luego vamos a crear la plantilla como se veran estos datos en pantalla para esto modificaremos el archivo ejarraysobjetos.component.html con el siguiente codigo: 
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr class="filters">
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Ciudad</th>
+        </tr>
+    </thead>
+    <tbody> 
+        <tr *ngFor="let alumno of alumnos"> 
+            <td>{{ alumno.id }}</td>
+            <td>{{ alumno.nombre }}</td>
+            <td>{{ alumno.apellido }}</td>
+            <td>{{ alumno.ciudad }}</td>
+        </tr>
+    </tbody>
+</table>
+
+usando *ngFor="let alumno of alumnos" la directiva ngFor podemos decirce que modifique el dom de la ventana segun los datos 
+
+con esto solo nos queda agregar el nuevo componente al archivo raiz para que podamos ver su resultado de la siguiente manera
+
+
+  <h3>Ejemplo de las Directivas ngFor de objetos</h3>
+  <hr>
+  <app-ejarrayobjetos></app-ejarrayobjetos>
+
+recuerda tener corriendo el servidor con el comnado en la terminal 
+
+ng serve
+
+tendriamos que ver una tabla con estilos de bostrap y con los datos que nosotros creamos en el archivo de ts para este componente. 
+
