@@ -116,3 +116,57 @@ teniendo las imagenes cargadas lo que sigue es actualizar el componente raiz con
 
 con esto completo podemos correr el proyecto y debemos ver como la informacion se ve con un borde de colores diferentes segun el equipo que convina con el logo del equipo. 
 
+import { Directive, HostBinding, HostListener } from '@angular/core';       //agregamos componentes extras que vamos usar
+
+@Directive({
+  selector: '[appMenuitem]'                                                 //igual que los componentes este seria el nombre para usar en el codigo html
+})
+export class MenuitemDirective {
+
+  @HostBinding('class.intemOrange') private mostrar: boolean = false;       //creamos la variable mostrar tipo boleano con caracteristica que contiene una clase que modificara segun su compotamiento. 
+
+  @HostListener('mouseover') onOver() {                                     // cuando el mause pasa sobre el codigo se activa la clase
+    this.mostrar = true;
+  }
+
+  @HostListener('mouseout') onOut() {                                     // cuando el mause se quita del codigo se desactiva la clase
+    this.mostrar = false; 
+  }
+
+}
+
+
+luego debemos crear la clase intemOrange en archivo de estilos general: src>styles.css con el siguiente codigo: 
+
+.intemOrange {
+    border-left: solid;
+    border-width:  5px;
+    border-left-color: orange;
+    padding-left: 10px;
+}
+
+
+luego creamos un componente para usar nuestra nueva directiva en este caso, lo que hacemos es usar la siguiente linea de comando en la teminal: 
+
+ng g c ejmidirectiva
+
+luego de cargar lo que modificamos es el archivo ejmidirectiva.component.html con el siguiente codigo: 
+
+<div class="container">
+    <h1 appMenuitem>Titulo</h1>
+    <h1 appMenuitem>Descuentos</h1>
+    <h1 appMenuitem>Precios</h1>
+</div>
+
+y por ultimo lo que hacemos es agregar nuestro nuevo component a la raiz de los componentes: 
+
+
+  <h3>Ejemplo de Directiva propia con HostBinding y HostListener</h3>
+  <hr>
+  <app-ejmidirectiva></app-ejmidirectiva>
+
+con esto ya podemos correr el proyecto con el siguiente comando en la terminal: 
+
+ng serve
+
+lo debemos ver es la ventana con una lista tipo menu donde al mover el mouse sobre el texto debe generar un borde en lado izquierdo de color naranja para 

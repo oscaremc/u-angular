@@ -291,3 +291,15 @@ ng serve
 
 tendriamos que ver una tabla con estilos de bostrap y con los datos que nosotros creamos en el archivo de ts para este componente. 
 
+
+
+DIRECTIVAS PROPIAS
+
+se crean por medio de comando con la siguiente linea de codigo en la terminal: 
+
+ng generate directive menuitem 
+
+se agregan el archivo a la carpeta app del proyecto pero tambien se puede direccionar para una carpeta personalizada. 
+
+en este caso esta en la carpeta app, abrimo el archivo y hacemos los siguientes cambios: 
+
