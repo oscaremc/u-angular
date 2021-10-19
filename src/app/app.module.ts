@@ -7,13 +7,14 @@ import { AppComponent } from './app.component';
 import { FechaactualComponent } from './fechaactual/fechaactual.component';
 import { CopyrightComponent } from './copyright/copyright.component';
 import { EjdirectivangifComponent } from './ejdirectivangif/ejdirectivangif.component';
+import { EjdirectivangstyleComponent } from './ejdirectivangstyle/ejdirectivangstyle.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     FechaactualComponent, 
     CopyrightComponent, 
-    EjdirectivangifComponent
+    EjdirectivangifComponent, EjdirectivangstyleComponent
   ],
   imports: [
     BrowserModule,
