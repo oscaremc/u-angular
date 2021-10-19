@@ -9,13 +9,14 @@ import { CopyrightComponent } from './copyright/copyright.component';
 import { EjdirectivangifComponent } from './ejdirectivangif/ejdirectivangif.component';
 import { EjdirectivangstyleComponent } from './ejdirectivangstyle/ejdirectivangstyle.component';
 import { EjdirectivangclassComponent } from './ejdirectivangclass/ejdirectivangclass.component';
+import { EjdirectivangforComponent } from './ejdirectivangfor/ejdirectivangfor.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     FechaactualComponent, 
     CopyrightComponent, 
-    EjdirectivangifComponent, EjdirectivangstyleComponent, EjdirectivangclassComponent
+    EjdirectivangifComponent, EjdirectivangstyleComponent, EjdirectivangclassComponent, EjdirectivangforComponent
   ],
   imports: [
     BrowserModule,

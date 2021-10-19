@@ -154,3 +154,57 @@ ng serve
 
 tendremos que ver el cambio del comportamiento de los estilos segun el valor que agreguemos al input. 
 
+
+
+DIRECTIVAS ngFor con arrays 
+
+creamos un nuevo componente usando la siguiente linea de comando en la terminal: 
+
+ng g c ejdirectivangfor 
+
+luego de que cargue vamos al archivo ejdirectivangfor.component.ts donde agregaremos el siguiente codigo: 
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-ejdirectivangfor',
+  templateUrl: './ejdirectivangfor.component.html',
+  styleUrls: ['./ejdirectivangfor.component.css']
+})
+export class EjdirectivangforComponent implements OnInit {
+
+  cursos: string[];       //creamos la variable cursos como array de string
+
+  constructor() {   
+    this.cursos = ['Angular', 'HTML', 'CSS'];     //agregamos al constructor el array
+   }
+
+  ngOnInit(): void {
+  }
+
+}
+
+en la plantilla de ejdirectivangfor.component.html creamos el siguiente codigo:
+
+<h3> Cursos Disponibles </h3>
+<ul>
+    <li *ngFor="let curso of cursos">
+        {{curso}}
+    </li>
+</ul>
+
+*ngFor="let curso of cursos" esta directiva lo que hace es decirle a array cursos que intere en sus objetos y cadaves que lo haga se guarde en la variable local cursos. por esto se creara un nuevo li por cada interacion que haga. 
+
+esto estaria bien para agregar el nuevo componente a al componente raiz y verlo en pantalla: 
+
+
+  <h3>Ejemplo de la directiva ngFor</h3>
+  <hr>
+  <app-ejdirectivangfor></app-ejdirectivangfor>
+
+
+para recargar el proyecto recuerda usar el siguiente comando en la terminal: 
+
+ng serve
+
+
