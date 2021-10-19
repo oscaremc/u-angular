@@ -273,3 +273,86 @@ por ultimo corremos el servidor del proyecto ponindo el siguiente comando dentro
 ng serve
 
 cuando alla cargado se tiene que mostrar las modificacioens que se hicieron, y cuando se haga click en el boton debe cambiar el texto como se diseño.
+
+
+
+CONOCIENDO LAS PROPIEDADES DE DATA BINDING
+
+TWO WAY BINDING:
+
+creamos un nuevo componente abrimos la la consola y escribimos el siguiente comando
+
+ng g c ej2waybinding
+
+luego de cargar vamos al archivo ej2waybinding.component.html y lo editamos de la siguiente manera: 
+
+
+<label> Introduzca un valor </label>
+<input type="text" class="form-control" [(ngModel)]="texto">
+<h3>{{ texto }}</h3>
+
+con [{ngModel}] le estamos diciendo que lea la directiva con ese nombre, mas a delante tomaremos el tema de las directivas. y en este caso la variable texto sea la que lea y modifique. 
+
+luego vamos al archivo ej2waybinding.component.ts y agregamos las siguiente lineas de comando: 
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-ej2waybinding',
+  templateUrl: './ej2waybinding.component.html',
+  styleUrls: ['./ej2waybinding.component.css']
+})
+export class Ej2waybindingComponent implements OnInit {
+
+  texto = "Texto original a cargar ... "
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+
+luego tenemos que confirmar que todo los eventos del formulario esten importando esto lo hacemos en el archivo de app.module.ts 
+
+verificar si esta la linea que importa: 
+
+import { FormsModule } from '@angular/forms';
+
+tambien si esta variable esta en la siguiente seccion: 
+
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule
+  ],
+
+  con esto ya podemos agregar el nuevo componente al proyecto raiz que es app.component.html
+
+  
+<div>
+  <h3>Ejemplo de Interpolacion</h3>
+  <app-viewmodelo></app-viewmodelo>
+  <br>
+  <br>
+  <h3>Ejemplo de Interpolacion con metodo</h3>
+  <app-ejmetodo></app-ejmetodo>
+  <br>
+  <br>
+  <h3>Ejemplo Propety Bindding</h3>
+  <app-ejpropetybinding></app-ejpropetybinding>
+  <br>
+  <br>
+  <h3>Ejemplo de Event Binding</h3>
+  <app-ejeventbinding></app-ejeventbinding>
+  <br>
+  <br>
+  <h3>Ejemplo de Two Binding</h3>
+  <app-ej2waybinding></app-ej2waybinding>
+</div>
+
+teniendo estos cambios listo ahora podemos ver las modificaciones corriendo el servidor del proyecto con el comando 
+
+ng server
+
+si todo sale bien tenemos que ver el input tenemos la opciones de esciribir texto e instantaneamente poder ver los cambios de la pantalla. 
