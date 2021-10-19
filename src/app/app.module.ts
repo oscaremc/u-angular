@@ -11,13 +11,14 @@ import { EjdirectivangstyleComponent } from './ejdirectivangstyle/ejdirectivangs
 import { EjdirectivangclassComponent } from './ejdirectivangclass/ejdirectivangclass.component';
 import { EjdirectivangforComponent } from './ejdirectivangfor/ejdirectivangfor.component';
 import { EjarrayobjetosComponent } from './ejarrayobjetos/ejarrayobjetos.component';
+import { EjdirectivangswitchComponent } from './ejdirectivangswitch/ejdirectivangswitch.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     FechaactualComponent, 
     CopyrightComponent, 
-    EjdirectivangifComponent, EjdirectivangstyleComponent, EjdirectivangclassComponent, EjdirectivangforComponent, EjarrayobjetosComponent
+    EjdirectivangifComponent, EjdirectivangstyleComponent, EjdirectivangclassComponent, EjdirectivangforComponent, EjarrayobjetosComponent, EjdirectivangswitchComponent
   ],
   imports: [
     BrowserModule,
