@@ -202,3 +202,74 @@ ahora agregamos, este nuevo componente a nuestro componente principal que es app
 
 Con esto puedo correr el proyecto y ver las modificaciones realizadas, recuerda que si todo esta bien, tenemos que ver como texto del imput cambia de "Escribir algo.." a "por favor" en 3 segundos despues de actualizar la pagina. 
 
+
+CONOCIENDO LAS PROPIEDADES DE DATA BINDING
+
+EVENT BINDING:
+
+creamos un nuevo componente, abrimos la terminal y con usamos la siguiente linea de comando:
+
+ng g c ejeventbinding 
+
+luego de cargar, modificamos el archivo ejeventbinding.component.html y agregamos el siguiente codigo: 
+
+<button class="btn btn-success" (click)="modTexto()"> 
+     <!-- //(click) con click defino el metodo que voy a usar y modTexto() es el metodo que voy a llamar cuando ocurra el evento -->
+    Modificar Texto
+</button>
+<hr>
+<h3>{{ texto }}</h3>        
+<!-- //variable que tendra el texto dinamico -->
+
+luego creamos el metodo y las variables, dentro del archivo ejeventbinding.component.ts 
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-ejeventbinding',
+  templateUrl: './ejeventbinding.component.html',
+  styleUrls: ['./ejeventbinding.component.css']
+})
+export class EjeventbindingComponent implements OnInit {
+
+  texto = "Originalmente el texto se carga aqui!";  //creamos la variable
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  modTexto() {      //creamos el metodo para cuando ocurra el evento se modifique la variable. 
+    this.texto = 'Al pulsar el boton el texto se muestra asi';
+  }
+
+}
+
+
+luego agregamos el nuevo metodo a nuestro componente raiz llamado app.component.html
+
+
+
+
+<div>
+  <h3>Ejemplo de Interpolacion</h3>
+  <app-viewmodelo></app-viewmodelo>
+  <br>
+  <br>
+  <h3>Ejemplo de Interpolacion con metodo</h3>
+  <app-ejmetodo></app-ejmetodo>
+  <br>
+  <br>
+  <h3>Ejemplo Propety Bindding</h3>
+  <app-ejpropetybinding></app-ejpropetybinding>
+  <br>
+  <br>
+  <h3>Ejemplo de Event Binding</h3>
+  <app-ejeventbinding></app-ejeventbinding>
+</div>
+
+por ultimo corremos el servidor del proyecto ponindo el siguiente comando dentro de la terminal: 
+
+ng serve
+
+cuando alla cargado se tiene que mostrar las modificacioens que se hicieron, y cuando se haga click en el boton debe cambiar el texto como se diseño.

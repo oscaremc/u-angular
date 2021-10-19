@@ -8,12 +8,13 @@ import { CopyrightComponent } from './copyright/copyright.component';
 import { ViewmodeloComponent } from './viewmodelo/viewmodelo.component';
 import { EjmetodoComponent } from './ejmetodo/ejmetodo.component';
 import { EjpropetybindingComponent } from './ejpropetybinding/ejpropetybinding.component';
+import { EjeventbindingComponent } from './ejeventbinding/ejeventbinding.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     FechaactualComponent, 
-    CopyrightComponent, ViewmodeloComponent, EjmetodoComponent, EjpropetybindingComponent
+    CopyrightComponent, ViewmodeloComponent, EjmetodoComponent, EjpropetybindingComponent, EjeventbindingComponent
   ],
   imports: [
     BrowserModule,
