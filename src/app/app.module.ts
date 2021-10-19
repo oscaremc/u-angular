@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { FechaactualComponent } from './fechaactual/fechaactual.component';
 import { CopyrightComponent } from './copyright/copyright.component';
 import { ViewmodeloComponent } from './viewmodelo/viewmodelo.component';
+import { EjmetodoComponent } from './ejmetodo/ejmetodo.component';
+import { EjpropetybindingComponent } from './ejpropetybinding/ejpropetybinding.component';
 
 @NgModule({
   declarations: [
     AppComponent, 
     FechaactualComponent, 
-    CopyrightComponent, ViewmodeloComponent
+    CopyrightComponent, ViewmodeloComponent, EjmetodoComponent, EjpropetybindingComponent
   ],
   imports: [
     BrowserModule,

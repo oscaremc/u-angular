@@ -94,3 +94,111 @@ luego corremos el proyecto con el siguiente comando:
 
 ng serve 
 
+
+CONOCIENDO LAS PROPIEDADES DE DATA BINDING
+
+INTERPOLATION CON METODOS:
+
+    - creamos un nuevo componente en la terminal usando el comando: 
+
+ng g c ejmetodo
+
+luego de cargar abrimos la carpeta ejmetodo > ejmetodo.component.ts y lo modificamos de la siguiente manera: 
+
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-ejmetodo',
+  templateUrl: './ejmetodo.component.html',
+  styleUrls: ['./ejmetodo.component.css']
+})
+export class EjmetodoComponent implements OnInit {
+
+  puntuacion = 9;                           // creamos la variable
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  getPuntuacion(){                          // creamos el metodo para usar la variable.
+    return this.puntuacion;
+  }
+}
+
+
+luego vamos a usar el metodo en el archivo ejmetodo.component.html modificandolo de la siguiente manera: 
+
+
+<p>
+    La puntuacion por Angular para la mayoria de los desarrolladores  es de {{ getPuntuacion() }} sobre 10.
+</p>
+
+
+luego agregamos el nuevo component en el componenete principal para visualizar las modificaciones, que es en el archivo app.component.html agregando la siguiente linea de codigo: 
+
+
+<div>
+  <app-viewmodelo></app-viewmodelo>
+  <app-ejmetodo></app-ejmetodo>
+</div>
+
+
+con esto podremos notar las modificaciones realizadas cargando de nuevo el proyecto con el siguiente comando: 
+
+ng serve
+
+
+
+CONOCIENDO LAS PROPIEDADES DE DATA BINDING
+
+PROPETY BINDING:
+
+creamos un nuevo conmponente abriendo la consola con el siguiente componente: 
+
+ng g c ejpropetybinding 
+
+despues de cargar en el archivo que se acaba de crear ejpropetybinding.component.html modificamos el codigo de la siguiente forma: 
+
+<input type="text" [placeholder]="texto">   //teniendo etiqueta placeholder en corchetes [] le damos a entender al codigo que busque la variable texto en el archivo ejpropetybinding.component.ts 
+
+abrimo el archivo ejpropetybinding.component.ts y agregamos las siguientes lineas de codigo: 
+
+import { Component, OnInit } from '@angular/core';
+
+@Component({
+  selector: 'app-ejpropetybinding',
+  templateUrl: './ejpropetybinding.component.html',
+  styleUrls: ['./ejpropetybinding.component.css']
+})
+
+export class EjpropetybindingComponent implements OnInit {
+
+  texto = 'Escribe algo';             //Creamos la variable texto
+
+  constructor() { 
+      setTimeout(() => {              //Creamos un metodo donde la variable texto un cambio por tiempo.
+        this.texto = 'por favor';
+      }, 3000);
+    }
+
+  ngOnInit(): void {
+  }
+
+}
+
+ahora agregamos, este nuevo componente a nuestro componente principal que es app.component.html para ver sus modificaciones: 
+
+
+<div>
+  <h3>Ejemplo de Interpolacion</h3>
+  <app-viewmodelo></app-viewmodelo>
+  <h3>Ejemplo de Interpolacion con metodo</h3>
+  <app-ejmetodo></app-ejmetodo>
+  <h3>Ejemplo Propety Bindding</h3>
+  <app-ejpropetybinding></app-ejpropetybinding>
+</div>
+
+Con esto puedo correr el proyecto y ver las modificaciones realizadas, recuerda que si todo esta bien, tenemos que ver como texto del imput cambia de "Escribir algo.." a "por favor" en 3 segundos despues de actualizar la pagina. 
+
