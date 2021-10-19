@@ -59,6 +59,42 @@ con esto podemos correr el proyecto con siguiente comando en la terminal:
 
 ng serve
 
+Sabemos que esta correcto si vamos impreso el mini formulario que creamos, pero inicialimente no aparecera el boton si solamente se esctriba un nombre en el input. 
 
 
 
+DIRECTIVA ngIf + else 
+
+usando el mismo codigo del ngIf lo que realizaremos es agregarle la logica que el boton este desactivado mientras le agreguen informacion campo texto. 
+
+actualizamos el archivo ejdirectivangif.component.html y agregamos el siguiente codigo: 
+
+
+<div class="container">
+    <label>Nombre y Apellido</label>
+    <input type="text" class="form-control" placeholder="Complete su nombre y apellido" [(ngModel)]="nombre">
+    <button type="submit" class="btn btn-primary" *ngIf="nombre; else desactivado">
+        Enviar
+    </button>
+    <ng-template #desactivado>
+        <button type="submit" class="btn btn-primary" disabled>
+            Enviar
+        </button>
+    </ng-template>
+    
+</div>
+
+lo primero que hacemos es agregar el:  *ngIf="nombre; else desactivado"    esto quiere decir que si no ocurre nada en ese evento muestre la templat con nombre desactivado. 
+luego creamos la templat desactivado que seria asi: 
+
+    <ng-template #desactivado>
+        <button type="submit" class="btn btn-primary" disabled>
+            Enviar
+        </button>
+    </ng-template>
+
+como puedes notar son etiquetas de apetura y cierre, que se muestra miestras el evento llame al templet desactivado, y en este caso muestra el mismo boton pero con la diferencia al original que ya no tene esta linea de codigo  *ngIf="nombre; else desactivado"   sino que fue remplazada por disabled. 
+
+recargamos el proyecto en la terminal con el comando:
+
+ng serve

@@ -3,7 +3,13 @@
 <div class="container">
     <label>Nombre y Apellido</label>
     <input type="text" class="form-control" placeholder="Complete su nombre y apellido" [(ngModel)]="nombre">
-    <button type="submit" class="btn btn-primary" *ngIf="nombre">
+    <button type="submit" class="btn btn-primary" *ngIf="nombre; else desactivado">
         Enviar
     </button>
+    <ng-template #desactivado>
+        <button type="submit" class="btn btn-primary" disabled>
+            Enviar
+        </button>
+    </ng-template>
+    
 </div>
