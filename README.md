@@ -1,27 +1,108 @@
-# Appcurso
+Curso de udemy Angular! 
+HOLA MUNDO! 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.10.
+Requerimientos: 
 
-## Development server
+Node: tener instalado node.js
+Angular: instalar de forma global por preferencia, el programa de angular cli
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+para instalar angular: 
 
-## Code scaffolding
+    - Abrir una terminal
+    - Agregar el siguiente codigo, que instalara angular cli
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+npm install -g @angular/cli
 
-## Build
+    - Despues de cargar 
+    - creamos una carpeta donde deseamos guardar el proyecto que vayamos a crear. 
+    - ingresamos a la carpeta donde vamos a crear el proyecto.
+    - Para crear un nuevos proyecto, usamos la siguiente linea de codigo.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+ng new "nombre del proyecto"
 
-## Running unit tests
+    - El valor de las comillas se cambian con el nombre del proyecto por preferencias. 
+    - Cuando cargar creacion del proyecto, entras a la carpeta con el siguiente comando.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+cd my-first-project
 
-## Running end-to-end tests
+    - Con esto podemos ya correr el primer proyecto que acabamos de crear, con el siguiente comando.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+ng serve
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Abrimos nuestro proyecto en el editor de codigo por preferencia: 
+
+Nos ubicamos dentro de la carpeta, src > app > app.component.html
+
+Este archivo nos mostrara lo que se pinta apenas corremos el programa, por eso borramos todo lo que este dentro y se halla creado por preferencia. 
+
+luego podemos agregar el codigo: 
+
+
+<div>
+  <h1 class="colorTitulo">HOLA MUNDO</h1>
+</div>
+
+
+con esto tenemos que ver el mensaje impre en pantalla "HOLA MUNDO"
+
+el siguiente paso es crear componente! 
+
+LOS COMPONENTES! 
+son cuatro archivos: 
+    - html      ( maquetar la estructura del componente )
+    - ts        ( tener las variables dinamicas del componente )
+    - css       ( los estilos que solo afectan el componente )
+    - aspect    ( archivo para pruebas del componente )
+
+Ademas: 
+todo componente que se crea debe agregarse al archivo que contiene los modulos llamado: app.module.ts
+con dos tareas, la primera es que se debe importart el nuevo componente y dos, que se agrege dentro del contenido del declarations. 
+
+hay una forma que angular nos permite crear un componente de forma automatica, donde todos los detalles el mismo programa los completa y donde el desarrollador solo se encargue modificar a su gusto el componente. 
+
+crear de forma automatica un componente de la siguiente manera: 
+
+ng generate component "nomber del componente"
+
+para tener un ejemplo podemos crear: 
+
+ng generate component copyright
+
+cuando termina de cargar notamos que dentro del proyecto se ha creado una carpeta con el nombre del nuevo componenete y ademas dentro esta los 4 archivos que contiene un componente de angular, adicional mnete, vemos que en el archivo app.module.ts de la carpeta app, ya se agregado automaticamente lo que significa que solo modificamos los archivos que nos serviran para perzonalizar el componente. 
+
+empezamos con el archivo copyright.component.ts, agregando el siguiente codigo: 
+
+
+export class CopyrightComponent implements OnInit {
+
+
+  copyright: string = 'ACME S.A.';
+  hoy: any = new Date();
+
+
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+}
+
+
+luego dentro del archivo copyright.component.html, agregamos el siguiente codigo: 
+
+
+<p>{{ copyright }} {{ hoy | date: 'y'}}</p>
+
+
+por ultimo para ver en pantalla el componente que acabamos de crear debemos agregarlo a nuestro archivo prinicpal, dentro del archivo app.component.html 
+
+
+<div>
+  <h1 class="colorTitulo">HOLA MUNDO</h1>
+  <app-fechaactual></app-fechaactual>
+  <app-copyright></app-copyright>
+</div>
+
+
+con esto sera suficiente para que cuando recarguemos nuestra aplicacion podamos ver que los cambios realizados y el nuevo componente funcionando

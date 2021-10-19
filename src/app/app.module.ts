@@ -3,10 +3,14 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FechaactualComponent } from './fechaactual/fechaactual.component';
+import { CopyrightComponent } from './copyright/copyright.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent, 
+    FechaactualComponent, 
+    CopyrightComponent
   ],
   imports: [
     BrowserModule,
